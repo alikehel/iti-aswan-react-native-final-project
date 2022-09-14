@@ -24,20 +24,20 @@ export default function App({ navigation, setIsSignedIn }) {
 
     const handleSignup = async () => {
         if (!signupData.username || !signupData.password) {
-            console.log("complete ur data");
+            Alert.alert("complete ur data");
             return;
         }
         if (signupData.username.length < 6) {
-            console.log("username must be six characters or bigger");
+            Alert.alert("username must be six characters or bigger");
             return;
         }
         if (signupData.password.length < 6) {
-            console.log("password must be six characters or bigger");
+            Alert.alert("password must be six characters or bigger");
             return;
         }
         const usernameExist = JSON.parse(await AsyncStorage.getItem(signupData.username));
         if (usernameExist) {
-            console.log("this user already exists");
+            Alert.alert("this user already exists");
         } else {
             const hash = bcrypt.hashSync(signupData.password, 12);
             await AsyncStorage.setItem(signupData.username, JSON.stringify(hash));

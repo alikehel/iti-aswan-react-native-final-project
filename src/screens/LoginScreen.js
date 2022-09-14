@@ -5,7 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState, useEffect } from "react";
 // import { NavigationContainer } from "@react-navigation/native";
 // import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet, Text, View, Button, TouchableOpacity, SafeAreaViewBase, TextInput } from "react-native";
+import { StyleSheet, Text, View, Button, TouchableOpacity, SafeAreaViewBase, TextInput, Alert } from "react-native";
 import bcrypt from "bcryptjs";
 
 export default function App({ navigation, isSinedIn, setIsSignedIn }) {
@@ -24,16 +24,16 @@ export default function App({ navigation, isSinedIn, setIsSignedIn }) {
 
     const handleLogin = async () => {
         if (!loginData.username || !loginData.password) {
-            console.log("complete ur data");
+            Alert.alert("complete ur data");
             return;
         }
         if (loginData.username.length < 6 || loginData.password.length < 6) {
-            console.log("wrong data");
+            Alert.alert("wrong data");
             return;
         }
         const usernameExist = JSON.parse(await AsyncStorage.getItem(loginData.username));
         if (!usernameExist) {
-            console.log("this user doesn't exist");
+            Alert.alert("this user doesn't exist");
             return;
         }
         const hashedPassword = usernameExist;
@@ -48,7 +48,7 @@ export default function App({ navigation, isSinedIn, setIsSignedIn }) {
             setIsSignedIn(true);
             // navigation.navigate("Home");
         } else {
-            console.log("wrong username or password");
+            Alert.alert("wrong username or password");
         }
     };
 

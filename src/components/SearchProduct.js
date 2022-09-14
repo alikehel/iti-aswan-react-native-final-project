@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
         marginVertical: 5,
     },
     input: {
-        flexGrow: "1",
+        flexGrow: 1,
     },
 });

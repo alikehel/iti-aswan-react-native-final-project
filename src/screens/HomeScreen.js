@@ -13,17 +13,34 @@ import ProfileScreen from "./ProfileScreen";
 import { useSelector } from "react-redux";
 const StackNavigator = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function App({ setIsSignedIn }) {
     const cart = useSelector((state) => state.cart.value);
 
     return (
         <BottomTabNavigator.Navigator screenOptions={{ headerShown: false }}>
-            <BottomTabNavigator.Screen name="Products" component={ProductsScreen} />
-            <BottomTabNavigator.Screen name="Cart" component={CartScreen} options={{ tabBarBadge: cart.length }} />
+            <BottomTabNavigator.Screen
+                name="Products"
+                component={ProductsScreen}
+                options={{
+                    tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
+                }}
+            />
+            <BottomTabNavigator.Screen
+                name="Cart"
+                component={CartScreen}
+                options={{
+                    tabBarBadge: cart.length,
+                    tabBarIcon: ({ color, size }) => <Ionicons name="cart" color={color} size={size} />,
+                }}
+            />
             <BottomTabNavigator.Screen
                 name="Profile"
                 children={() => <ProfileScreen setIsSignedIn={setIsSignedIn} />}
+                options={{
+                    tabBarIcon: ({ color, size }) => <Ionicons name="md-person" color={color} size={size} />,
+                }}
             />
         </BottomTabNavigator.Navigator>
     );

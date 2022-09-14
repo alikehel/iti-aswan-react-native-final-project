@@ -2,13 +2,16 @@
 // import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 // import { StatusBar } from "expo-status-bar";
+// import { GestureResponderHandlers } from "react-native";
+// import RCTAnimation from "react-native";
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, GestureHandlerRefContext } from "@react-navigation/stack";
 import { StyleSheet, Text, View, Button, TouchableOpacity, SafeAreaViewBase } from "react-native";
 import HomeScreen from "./src/screens/HomeScreen";
 import AccountScreen from "./src/screens/AccountScreen";
+import "react-native-gesture-handler";
 
 import { store } from "./src/redux/store";
 import { Provider, useSelector, useDispatch } from "react-redux";

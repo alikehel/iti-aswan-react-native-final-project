@@ -9,6 +9,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Text, View, Button, TouchableOpacity, SafeAreaViewBase } from "react-native";
 import LoginScreen from "./LoginScreen";
 import SignupScreen from "./SignupScreen";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const StackNavigator = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -19,10 +20,16 @@ export default function App(props) {
             <BottomTabNavigator.Screen
                 name="Login"
                 children={() => <LoginScreen isSignedIn={props.isSignedIn} setIsSignedIn={props.setIsSignedIn} />}
+                options={{
+                    tabBarIcon: ({ color, size }) => <Ionicons name="ios-log-in" color={color} size={size} />,
+                }}
             />
             <BottomTabNavigator.Screen
                 name="Signup"
                 children={() => <SignupScreen isSignedIn={props.isSignedIn} setIsSignedIn={props.setIsSignedIn} />}
+                options={{
+                    tabBarIcon: ({ color, size }) => <Ionicons name="ios-log-out" color={color} size={size} />,
+                }}
             />
         </BottomTabNavigator.Navigator>
     );
