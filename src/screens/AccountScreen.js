@@ -28,7 +28,7 @@ export default function App(props) {
                 name="Signup"
                 children={() => <SignupScreen isSignedIn={props.isSignedIn} setIsSignedIn={props.setIsSignedIn} />}
                 options={{
-                    tabBarIcon: ({ color, size }) => <Ionicons name="ios-log-out" color={color} size={size} />,
+                    tabBarIcon: ({ color, size }) => <Ionicons name="ios-log-in-outline" color={color} size={size} />,
                 }}
             />
         </BottomTabNavigator.Navigator>

@@ -21,10 +21,10 @@ export default function App() {
     const dispatch = useDispatch();
 
     useEffect(async () => {
-        // const response = (await axios.get("https://api.escuelajs.co/api/v1/products?offset=0&limit=40")).data;
+        const response = (await axios.get("https://dummyjson.com/products")).data.products;
 
         //dev
-        const response = productsDataa;
+        // const response = productsDataa;
 
         const productsData = response.map((item) => {
             return {

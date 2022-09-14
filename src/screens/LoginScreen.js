@@ -37,7 +37,8 @@ export default function App({ navigation, isSinedIn, setIsSignedIn }) {
             return;
         }
         const hashedPassword = usernameExist;
-        if (bcrypt.compareSync(loginData.password, hashedPassword)) {
+        // if (bcrypt.compareSync(loginData.password, hashedPassword)) {
+        if (loginData.password == hashedPassword) {
             AsyncStorage.setItem(
                 "loggedinUser",
                 JSON.stringify({
@@ -70,6 +71,7 @@ export default function App({ navigation, isSinedIn, setIsSignedIn }) {
                     id="password"
                     type="password"
                     onChangeText={(value) => handlePasswordChange(value)}
+                    secureTextEntry
                 />
             </View>
             <TouchableOpacity style={styles.button} onPress={() => handleLogin()}>
@@ -91,6 +93,7 @@ const styles = StyleSheet.create({
     input: {
         borderRadius: 5,
         borderWidth: 5,
+        paddingHorizontal: 10,
     },
     button: {
         backgroundColor: "#000",

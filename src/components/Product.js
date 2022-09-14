@@ -59,10 +59,16 @@ export default function App(props) {
             <View style={styles.rightContainer}>
                 <Text style={styles.title}>{props.product.title}</Text>
                 <Text style={styles.description}>{props.product.description}</Text>
-                <Text style={styles.rating}>{props.product.rating}</Text>
+                {/* <Text style={styles.rating}>{props.product.rating}</Text> */}
                 <Text style={styles.price}>${props.product.price}</Text>
                 {props.isCart ? (
-                    <View style={{ flexDirection: "row", alignContent: "space-around", alignItems: "center" }}>
+                    <View
+                        style={{
+                            marginTop: 10,
+                            flexDirection: "row",
+                            alignContent: "space-around",
+                            alignItems: "center",
+                        }}>
                         <TouchableOpacity onPress={() => props.changeQuantity(props.product, -1)}>
                             <Ionicons name="ios-remove-circle-outline" size={25} />
                         </TouchableOpacity>
@@ -77,7 +83,7 @@ export default function App(props) {
                         </TouchableOpacity>
                     </View>
                 ) : (
-                    <View style={{ flexDirection: "row", alignContent: "space-around" }}>
+                    <View style={{ marginTop: 10, flexDirection: "row", alignContent: "space-around" }}>
                         {/* <Ionicons name="md-checkmark-circle" size={32} /> */}
                         <Button title="Add to Cart" onPress={() => addToCartt(props.product)} />
                     </View>
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 5,
         // width: "100%",
-        height: 150,
+        height: "100%",
         marginVertical: 5,
         backgroundColor: "#fff",
     },

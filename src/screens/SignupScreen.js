@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 // import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View, Button, TouchableOpacity, SafeAreaViewBase, TextInput, Alert } from "react-native";
 import bcrypt from "bcryptjs";
+// const bcrypt = dcodeIO.bcrypt;
+// import bcrypt from "bcrypt-react-native";
 
 export default function App({ navigation, setIsSignedIn }) {
     const [signupData, setSignupData] = useState({
@@ -39,8 +41,10 @@ export default function App({ navigation, setIsSignedIn }) {
         if (usernameExist) {
             Alert.alert("this user already exists");
         } else {
-            const hash = bcrypt.hashSync(signupData.password, 12);
-            await AsyncStorage.setItem(signupData.username, JSON.stringify(hash));
+            // const salt = await bcrypt.getSalt(12);
+            // const hash = await bcrypt.hash(salt, signupData.password);
+            // const hash = bcrypt.hashSync(signupData.password, 12);
+            await AsyncStorage.setItem(signupData.username, JSON.stringify(signupData.password));
             AsyncStorage.setItem(
                 "loggedinUser",
                 JSON.stringify({
@@ -71,6 +75,7 @@ export default function App({ navigation, setIsSignedIn }) {
                     id="password"
                     type="password"
                     onChangeText={(value) => handlePasswordChange(value)}
+                    secureTextEntry
                 />
             </View>
             <TouchableOpacity style={styles.button} onPress={() => handleSignup()}>
@@ -92,6 +97,7 @@ const styles = StyleSheet.create({
     input: {
         borderRadius: 5,
         borderWidth: 5,
+        paddingHorizontal: 10,
     },
     button: {
         backgroundColor: "#000",
